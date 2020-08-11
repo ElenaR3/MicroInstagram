@@ -1,0 +1,37 @@
+ 
+ <h4 style="text-align: center; color: blue">This is where you can upload a new photo</h4>
+<hr>
+<div style="width: 500px; margin: auto;" class="col-md-6">
+  <form #newPhotoForm="ngForm" autocomplete="off" novalidate>
+
+    <div class="form-group" [ngClass]="{'error': newPhotoForm.controls.name?.invalid && newPhotoForm.controls.name?.touched}">
+      <label for="eventName">Album:</label>
+      <input #albumID [(ngModel)]="newPhoto.albumId" name="albumId" required id="albumId" type="text" class="form-control" placeholder="The AlbumID..." />
+    </div>
+   
+    <div class="form-group" [ngClass]="{'error': newPhotoForm.controls.time?.invalid && newPhotoForm.controls.time?.touched}">
+      <label for="eventTime">Title:</label>
+      <input #title [(ngModel)]="newPhoto.title" name="title" required id="title" type="text" class="form-control" placeholder="Image title..." />
+    </div>
+  
+    <div class="form-group">
+      <label for="onlineUrl">Url:</label>
+      <input #url (ngModel)="newPhoto?.url" name="url" id="url" type="text" class="form-control" placeholder="Image url..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newPhotoForm.controls.imageUrl?.invalid && newPhotoForm.controls.imageUrl?.touched}">
+      <label for="imageUrl">ThumbnailURL:</label>
+      <input #thumb [(ngModel)]="newPhoto.thumbnailUrl" name="thumbnailUrl" required pattern=".*\/.*.(png|jpg)" id="thumbnailUrl" type="text" class="form-control" placeholder="url of image insert here..." />
+      <img [src]="newPhotoForm.controls.imageUrl.value" *ngIf="newPhotoForm.controls.imageUrl?.valid" />
+    </div>
+    
+    <button type="submit" (click)="savePhoto(albumID,title,url, thumb)" class="btn btn-primary">Save</button>
+    <button type="button"  class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+
+  <div *ngIf="submitted">
+    <h4>You submitted successfully!</h4>
+    <button class="btn btn-success" (click)="addNewPhoto()">Add</button>
+  </div>
+  
+</div> 
+

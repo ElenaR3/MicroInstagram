@@ -1,0 +1,7 @@
+
+<img class="card-img-top" [src]="photo?.thumbnailUrl">
+<div class="card-body">
+<div class="text-justify" class="text-center" class="title"><b>{{photo?.title}}</b></div>
+<br>
+<div class="text-center">
+  <a [routerLink]="['/photos', photo.id]" class="btn btn-primary btn-xs">Click for more!</a>

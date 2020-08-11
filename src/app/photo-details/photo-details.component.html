@@ -1,0 +1,87 @@
+
+
+<div style="width: 500px; margin: auto;">
+  <div class="row">
+  <div *ngIf="photo" class="edit-form">
+    <h4>Current photo</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="photo.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Id: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="id"
+          [(ngModel)]="photo.id"
+          name="id"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="albumId">AlbumId: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="albumId"
+          [(ngModel)]="photo.albumId"
+          name="albumId"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="url">Url: </label>
+        <input
+          type="text"
+          class="form-control"
+          id="url"
+          [(ngModel)]="photo.url"
+          name="url"
+        />
+      </div>
+
+      </form>
+    <button class="badge badge-danger mr-2" (click)="confirmDeletion()">
+      Delete
+    </button>
+
+
+    <button
+      type="submit"
+      class="badge badge-success"
+      (click)="updatePhoto()"
+    >
+      Update
+    </button>
+
+    <button
+    type="submit"
+    class="badge badge"
+    (click)="goBack()"
+  >
+    Go back
+  </button>
+
+
+    <div class="custom-made">
+      <img [src]="photo?.thumbnailUrl" style="max-width:100%;" class="full-height" [alt]="photo?.title" class="event-image">
+    </div>
+
+    <div *ngIf="!photo">
+      <br />
+      <p>Cannot access this photo...</p>
+    </div>
+  </div>
+
+
+
+
+  
