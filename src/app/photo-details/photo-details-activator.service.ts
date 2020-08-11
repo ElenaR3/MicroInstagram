@@ -11,8 +11,8 @@ export class EventRouteActivator implements CanActivate {
     canActivate (router: ActivatedRouteSnapshot){
         const existingPhoto=!!this.displayPhoto.get(router.params['id'])
 
-        if(existingPhoto)
-        this.router.navigate(['404'])
+        if(!existingPhoto)
+           this.router.navigate(['404'])
         return existingPhoto
     }
 }

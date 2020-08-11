@@ -22,9 +22,6 @@ const routes: Routes = [
   {
     path:'addnew',
     component: UploadPhoto
-  },{
-    path:'404',
-    component: Error404Component
   },
     {
       path: "photos",
@@ -45,8 +42,11 @@ const routes: Routes = [
       resolve: {
         photo: PhotoDetailResolver
       }
-    }
-    
+    }, {
+        path:'404',
+        component: Error404Component
+      }
+  
   ];
 
 @NgModule({
